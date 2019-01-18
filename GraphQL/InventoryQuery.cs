@@ -1,5 +1,6 @@
 using CoreGraphQL.Models;
 using GraphQL.Types;
+using System.Collections.Generic;
 
 namespace CoreGraphQL.GraphQL
 {
@@ -34,6 +35,19 @@ namespace CoreGraphQL.GraphQL
                     return datastore.GetItems();
                 }
             );
+
+            Field<ListGraphType<OrderType>, IEnumerable<Order>>()
+                .Name("Orders")
+                .ResolveAsync(ctx =>
+                {
+                    return datastore.GetOrdersAsync();
+                });
+
+            Field<ListGraphType<CustomerType>, IEnumerable<Customer>>()
+                .Name("Customers")
+                .ResolveAsync(ctx => {
+                    return datastore.GetCustomersAsync();
+                });
         }
     }
 }

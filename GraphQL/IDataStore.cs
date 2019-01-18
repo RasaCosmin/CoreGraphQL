@@ -10,5 +10,12 @@ namespace CoreGraphQL.GraphQL
         Item GetItemByBarcode(string barcode);
 
         Task<Item> AddItemAsync(Item item);
+        Task<Customer> AddCustomerAsync(Customer customer);
+        Task<Order> AddOrderAsync(Order order);
+
+        Task<IEnumerable<Order>> GetOrdersAsync();
+        Task<IEnumerable<Customer>> GetCustomersAsync();
+        Task<Customer> GetCustomerByIdAsync(int customerId);
+        Task<IEnumerable<Order>> GetOrdersByCustomerIDAsunc(int customerId);
     }
 }
