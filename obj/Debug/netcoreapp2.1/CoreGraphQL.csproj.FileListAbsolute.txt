@@ -1,0 +1,15 @@
+C:\work\CoreGraphQL\bin\Debug\netcoreapp2.1\CoreGraphQL.deps.json
+C:\work\CoreGraphQL\bin\Debug\netcoreapp2.1\CoreGraphQL.runtimeconfig.json
+C:\work\CoreGraphQL\bin\Debug\netcoreapp2.1\CoreGraphQL.runtimeconfig.dev.json
+C:\work\CoreGraphQL\bin\Debug\netcoreapp2.1\CoreGraphQL.dll
+C:\work\CoreGraphQL\bin\Debug\netcoreapp2.1\CoreGraphQL.pdb
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\CoreGraphQL.csprojAssemblyReference.cache
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\CoreGraphQL.csproj.CoreCompileInputs.cache
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\CoreGraphQL.RazorAssemblyInfo.cache
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\CoreGraphQL.RazorAssemblyInfo.cs
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\CoreGraphQL.AssemblyInfoInputs.cache
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\CoreGraphQL.AssemblyInfo.cs
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\CoreGraphQL.RazorTargetAssemblyInfo.cache
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\CoreGraphQL.dll
+C:\work\CoreGraphQL\obj\Debug\netcoreapp2.1\CoreGraphQL.pdb
