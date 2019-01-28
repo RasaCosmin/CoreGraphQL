@@ -48,6 +48,13 @@ namespace CoreGraphQL.GraphQL
                 .ResolveAsync(ctx => {
                     return datastore.GetCustomersAsync();
                 });
+
+            Field<ListGraphType<OrderItemType>, IEnumerable<OrderItem>>()
+                .Name("OrderItem")
+                .ResolveAsync(ctx =>
+                {
+                    return datastore.GetOrderItemAsync();
+                });
         }
     }
 }

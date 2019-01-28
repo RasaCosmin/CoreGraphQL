@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace CoreGraphQL.Models
 {
     public class Item
@@ -6,5 +8,7 @@ namespace CoreGraphQL.Models
         public string Barcode { get; set; }
         public string Title { get; set; }
         public decimal SellingPrice { get; set; }
+
+        public IEnumerable<OrderItem> OrderItems { get; set; }
     }
 }

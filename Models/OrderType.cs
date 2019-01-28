@@ -1,4 +1,5 @@
 ﻿using CoreGraphQL.GraphQL;
+using GraphQL.DataLoader;
 using GraphQL.Types;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace CoreGraphQL.Models
 {
     public class OrderType: ObjectGraphType<Order>
     {
-        public OrderType(IDataStore dataStore)
+        public OrderType(IDataStore dataStore, IDataLoaderContextAccessor accessor)
         {
             Field(o => o.Tag);
             Field(o => o.CreatedAt);
@@ -17,7 +18,8 @@ namespace CoreGraphQL.Models
                 .Name("Customer")
                 .ResolveAsync(ctx =>
                 {
-                    return dataStore.GetCustomerByIdAsync(ctx.Source.CustomerId);
+                    var customersLoader = accessor.Context.GetOrAddBatchLoader<int, Customer>("GetCustomersById", dataStore.GetCustomersByIdAsync);
+                    return customersLoader.LoadAsync(ctx.Source.CustomerId);
                 });
         }
     }

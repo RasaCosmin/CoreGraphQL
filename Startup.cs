@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CoreGraphQL.GraphQL;
 using CoreGraphQL.Models;
 using GraphQL;
+using GraphQL.DataLoader;
 using GraphQL.Http;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
@@ -43,6 +44,8 @@ namespace CoreGraphQL
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
+
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
 
@@ -56,6 +59,17 @@ namespace CoreGraphQL
 
             services.AddScoped<ItemInputType>();
             services.AddScoped<InventoryMutation>();
+
+            services.AddScoped<CustomerType>();
+            services.AddScoped<CustomerInputType>();
+            services.AddScoped<OrderType>();
+            services.AddScoped<OrderInputType>();
+
+            services.AddScoped<OrderItemType>();
+            services.AddScoped<OrderItemInputType>();
+
+            services.AddSingleton<IDataLoaderContextAccessor, DataLoaderContextAccessor>();
+            services.AddSingleton<DataLoaderDocumentListener>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

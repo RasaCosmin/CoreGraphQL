@@ -1,13 +1,14 @@
+using GraphQL;
 using GraphQL.Types;
 
 namespace CoreGraphQL.GraphQL
 {
     public class InventorySchema : Schema
     {
-        public InventorySchema(InventoryQuery query, InventoryMutation mutation)
+        public InventorySchema(IDependencyResolver resolver) : base(resolver)
         {
-            Query = query;
-            Mutation = mutation;
+            Query = resolver.Resolve<InventoryQuery>();
+            Mutation = resolver.Resolve<InventoryMutation>();
         }
     }
 }

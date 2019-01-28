@@ -2,9 +2,11 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using GraphQL;
+using GraphQL.DataLoader;
 using GraphQL.Http;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
 namespace CoreGraphQL.GraphQL
@@ -22,7 +24,7 @@ namespace CoreGraphQL.GraphQL
             _executer = executer;
         }
 
-        public async Task InvokeAsync(HttpContext httpContext, ISchema schema)
+        public async Task InvokeAsync(HttpContext httpContext, ISchema schema, IServiceProvider serviceProvider)
         {
             if (httpContext.Request.Path.StartsWithSegments("/api/graphql") && string.Equals(httpContext.Request.Method, "POST", StringComparison.OrdinalIgnoreCase))
             {
@@ -38,6 +40,7 @@ namespace CoreGraphQL.GraphQL
                         doc.Schema = schema;
                         doc.Query = request.Query;
                         doc.Inputs = request.Variables.ToInputs();
+                        doc.Listeners.Add(serviceProvider.GetRequiredService<DataLoaderDocumentListener>());
                     }).ConfigureAwait(false);
 
                     var json = _writer.Write(result);
